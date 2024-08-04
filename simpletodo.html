@@ -15,24 +15,32 @@
    let input_box = document.getElementById("input");
    let button = document.getElementById("btn");
    let list = document.getElementById("list");
-
-   button.addEventListener("click" , () => {
-    if(input_box.value ===""){
-        alert("Must Write Something Before Adding")
+ 
+   let addTodo = () => {
+    if (input_box.value.trim() == ""){
+        alert("Must Write Something")
     }
     else{
-   let list_item = document.createElement("li")
-   list_item.textContent =input_box.value
-   list.append(list_item)
-   input_box.value ="";
+        let listitem =document.createElement("li")
+        listitem.textContent = input_box.value;
+        list.append(listitem)
+       input_box.value = "";
+    }
+   }
+   button.addEventListener("click" , addTodo)
+  
+   list.addEventListener("click", (event) => {
+    if (event.target.tagName == "LI"){
+        event.target.remove();
     }
    })
- 
-   list.addEventListener("click" , (event) => {
-    let remove_list = event.target;
-    remove_list.remove()
-   })
 
+   input_box.addEventListener("keydown" , (event) => {
+    if (event.key === "Enter"){
+        event.preventDefault();
+        addTodo()
+    }
+   })
     </script>
 </body>
 </html>
