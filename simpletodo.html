@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple TODO</title>
+</head>
+<body>
+    <h1>MY TODO APP</h1>
+    <input type="text" id="input" placeholder="Write Here...">
+    <button id="btn">Add Todo</button>
+    <ul id="list">
+    </ul>
+    <script>
+   let input_box = document.getElementById("input");
+   let button = document.getElementById("btn");
+   let list = document.getElementById("list");
+
+   button.addEventListener("click" , () => {
+    if(input_box.value ===""){
+        alert("Must Write Something Before Adding")
+    }
+    else{
+   let list_item = document.createElement("li")
+   list_item.textContent =input_box.value
+   list.append(list_item)
+   input_box.value ="";
+    }
+   })
+ 
+   list.addEventListener("click" , (event) => {
+    let remove_list = event.target;
+    remove_list.remove()
+   })
+
+    </script>
+</body>
+</html>
